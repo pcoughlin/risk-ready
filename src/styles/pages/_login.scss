@@ -6,7 +6,7 @@
 .login-wrapper {
   position: absolute;
   width: calc(100% - 22rem);
-  height: 90vh;
+  height: 85vh;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -70,7 +70,7 @@
 
 .login,
 .signup {
-  max-width: 70%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 2.7rem;
@@ -84,7 +84,8 @@
   font-size: 1.4rem;
 
   &__text {
-    max-width: 100%;
+    width: 70%;
+    margin: auto;
     .heading {
       font-size: 3.6rem;
       color: $color-black-1;
