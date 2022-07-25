@@ -6,7 +6,7 @@ const PostForm = () => {
       <form className="post-form">
         <div className="post-form__group">
           <img
-            src="/user-placeholder.png"
+            src="/assets/images/user-placeholder.png"
             alt="user avatar"
             className="post-form__avatar"
           />
@@ -20,7 +20,7 @@ const PostForm = () => {
           <div className="post-form__control post-form__control--file">
             <label htmlFor="postFile" className="post-form__label">
               <span className="post-form__control--img">
-                <img src="/add-photo.svg" alt="add a file" />
+                <img src="/assets/images/add-photo.svg" alt="add a file" />
               </span>
               <input
                 id="postFile"
@@ -33,7 +33,7 @@ const PostForm = () => {
           <div className="post-form__control post-form__control--tag">
             <span className="post-form__control--img">
               <img
-                src="/user-select.svg"
+                src="/assets/images/user-select.svg"
                 alt=""
                 // className="post-form__control--img"
               />
@@ -41,7 +41,7 @@ const PostForm = () => {
             <span>Tag</span>
           </div>
           <button type="submit" className="post-form__control--btn">
-            <span>Post</span> <img src="/send.svg" alt="" />
+            <span>Post</span> <img src="/assets/images/send.svg" alt="" />
           </button>
         </div>
       </form>

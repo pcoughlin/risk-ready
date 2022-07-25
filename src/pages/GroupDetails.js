@@ -13,7 +13,7 @@ const GroupDetails = () => {
         <GroupActions />
         <div className="cover">
           <div className="cover__img">
-            <img src="/country-home.jpg" alt="group cover" />
+            <img src="/assets/images/country-home.jpg" alt="group cover" />
             <div className="cover__edit">
               <FontAwesomeIcon icon="fa-solid fa-pencil" />
               <span>Edit</span>
@@ -26,10 +26,10 @@ const GroupDetails = () => {
           <div className="cover__controls">
             <div className="members">
               <div className="members__avi">
-                <img src="/group-1.png" alt="" />
-                <img src="/group-2.png" alt="" />
-                <img src="/group-3.png" alt="" />
-                <img src="/group-4.png" alt="" />
+                <img src="/assets/images/group-1.png" alt="" />
+                <img src="/assets/images/group-2.png" alt="" />
+                <img src="/assets/images/group-3.png" alt="" />
+                <img src="/assets/images/group-4.png" alt="" />
               </div>
               <div className="members__count">4.5K members</div>
             </div>

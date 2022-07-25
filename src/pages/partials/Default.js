@@ -6,7 +6,7 @@ const Default = () => {
     <div className="wrapper">
       <div className="top-bar">
         <div className="logo">
-          <img src="/logo-brand.svg" alt="" />
+          <img src="/assets/images/logo-brand.svg" alt="" />
         </div>
         <div className="actions">
           <div className="actions__search">
@@ -18,7 +18,7 @@ const Default = () => {
                   placeholder="Search...."
                 />
                 <span className="search-form__icon">
-                  <img src="/search.svg" alt="" />
+                  <img src="/assets/images/search.svg" alt="" />
                 </span>
               </div>
             </form>
@@ -26,7 +26,7 @@ const Default = () => {
           <div className="actions__notifications">
             <span className="notification">
               <img
-                src="/chat-bubbles.svg"
+                src="/assets/images/chat-bubbles.svg"
                 alt="chat notification"
                 className="notification__img"
               />
@@ -34,20 +34,28 @@ const Default = () => {
             </span>
             <span className="notification">
               <img
-                src="/alarm.svg"
+                src="/assets/images/alarm.svg"
                 alt="notification"
                 className="notification__img"
               />
             </span>
             <span className="notification">
-              <img src="/language.svg" alt="" className="notification__img" />
+              <img
+                src="/assets/images/language.svg"
+                alt=""
+                className="notification__img"
+              />
               <span className="notification__attr"></span>
             </span>
           </div>
           <div className="actions__profile">
             <span className="name">John Doe</span>
             {/* <div className="avatar"> */}
-            <img src="/user-placeholder.png" alt="" className="avatar" />
+            <img
+              src="/assets/images/user-placeholder.png"
+              alt=""
+              className="avatar"
+            />
             {/* </div> */}
           </div>
         </div>
@@ -71,7 +79,7 @@ const Default = () => {
               <div className="widget__weather">
                 <span className="heading">Current Location</span>
                 <span className="city">Johannesburg</span>
-                <img src="/cloud.svg" alt="cloud" />
+                <img src="/assets/images/cloud.svg" alt="cloud" />
                 <div className="summary">
                   <span className="feel">Clear</span>
                   <div className="span temp">42</div>

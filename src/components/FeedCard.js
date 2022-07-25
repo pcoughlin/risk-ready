@@ -10,13 +10,13 @@ export const FeedCard = ({ type }) => {
           }`}
         >
           <img
-            src="/post-img.png"
+            src="/assets/images/post-img.png"
             alt=""
             className="avatar-img  avatar-img--group"
           />
           {type === 'group' && (
             <img
-              src="/overlay.png"
+              src="/assets/images/overlay.png"
               alt=""
               className="avatar-img 
                   avatar-img--absolute"
@@ -29,29 +29,38 @@ export const FeedCard = ({ type }) => {
           <div className="detail--bottom">Rhode Island</div>
         </div>
         <div className="options">
-          <img src="/ellipsis.svg" alt="" />
+          <img src="/assets/images/ellipsis.svg" alt="" />
         </div>
       </div>
       <div className="card__media card__media--grid-1 card__media--grid-2  card__media--grid-3 card__media--grid-4">
-        <img src="/post-img.png" alt="" />
-        <img src="/post-img.png" alt="" />
-        <img src="/post-img.png" alt="" /> <img src="/post-img.png" alt="" />
+        <img src="/assets/images/post-img.png" alt="" />
+        <img src="/assets/images/post-img.png" alt="" />
+        <img src="/assets/images/post-img.png" alt="" />{' '}
+        <img src="/assets/images/post-img.png" alt="" />
       </div>
       <div className="card__control--bottom">
         <div className="data">
           <img
-            src="/message.svg"
+            src="/assets/images/message.svg"
             alt="number of comments"
             className="data__img"
           />
           <div className="data__value">600</div>
         </div>
         <div className="data">
-          <img src="/heart.svg" alt="likes" className="data__img" />
+          <img
+            src="/assets/images/heart.svg"
+            alt="likes"
+            className="data__img"
+          />
           <div className="data__value">800</div>
         </div>
         <div className="data">
-          <img src="/share.svg" alt="share" className="data__img" />
+          <img
+            src="/assets/images/share.svg"
+            alt="share"
+            className="data__img"
+          />
           <div className="data__value">200</div>
         </div>
       </div>

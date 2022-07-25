@@ -82,9 +82,9 @@ const Login = () => {
       <div className="alternative">
         <p className="alternative__heading">Or</p>
         <div className="alternative__options">
-          <img src="/signIn-google.png" alt="google login" />
-          <img src="/signIn-facebook.png" alt="facebook login" />
-          <img src="/signIn-apple.png" alt="apple login" />
+          <img src="/assets/images/signIn-google.png" alt="google login" />
+          <img src="/assets/images/signIn-facebook.png" alt="facebook login" />
+          <img src="/assets/images/signIn-apple.png" alt="apple login" />
         </div>
       </div>
     </div>

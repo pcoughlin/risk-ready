@@ -39,6 +39,7 @@
 .top {
   position: sticky;
   width: 100%;
+  padding: 3rem 0 1rem;
   top: 0;
   z-index: 1;
   background-color: $color-white;
@@ -46,7 +47,8 @@
     0px 0px 6px rgba($color-black, 0.07);
 
   img {
-    margin: 3rem auto 0;
+    height: 6rem;
+    margin: auto 0;
     display: block;
     // margin: auto;
   }

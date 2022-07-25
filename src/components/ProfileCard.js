@@ -5,7 +5,7 @@ const ProfileCard = ({ type }) => {
   return (
     <div className="profile">
       <div className="profile__avatar">
-        <img src="/user-placeholder.png" alt="profile avatar" />
+        <img src="/assets/images/user-placeholder.png" alt="profile avatar" />
         {type === 'connection' && <span className="connection__status"></span>}
       </div>
       <div className="profile__name">Rob </div>
@@ -13,7 +13,7 @@ const ProfileCard = ({ type }) => {
       {type === 'neighbours' && (
         <div className="profile__mutuals">
           <img
-            src="/mutuals.svg"
+            src="/assets/images/mutuals.svg"
             alt="mutuals"
             className="profile__mutuals--img"
           />

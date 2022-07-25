@@ -7,7 +7,7 @@ const LocalHeadline = () => {
       <div className="headline">
         <div className="headline__media">
           <img
-            src="/headline-img.png"
+            src="/assets/images/headline-img.png"
             alt="headline"
             className="headline-img"
           />
@@ -20,7 +20,7 @@ const LocalHeadline = () => {
         <div className="other">
           <div className="other__img">
             <img
-              src="/headline-img.png"
+              src="/assets/images/headline-img.png"
               alt="headline"
               className="headline-img"
             />
@@ -37,7 +37,7 @@ const LocalHeadline = () => {
         <div className="other">
           <div className="other__img">
             <img
-              src="/headline-img.png"
+              src="/assets/images/headline-img.png"
               alt="headline"
               className="headline-img"
             />
@@ -54,7 +54,7 @@ const LocalHeadline = () => {
         <div className="other">
           <div className="other__img">
             <img
-              src="/headline-img.png"
+              src="/assets/images/headline-img.png"
               alt="headline"
               className="headline-img"
             />
@@ -71,7 +71,7 @@ const LocalHeadline = () => {
         <div className="other">
           <div className="other__img">
             <img
-              src="/headline-img.png"
+              src="/assets/images/headline-img.png"
               alt="headline"
               className="headline-img"
             />
