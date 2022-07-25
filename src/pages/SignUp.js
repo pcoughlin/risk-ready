@@ -27,6 +27,9 @@ export const SignUp = () => {
 
   return (
     <div className="signup">
+      <div className="two-fa__text">
+        <h2 className="heading">Hello! Sign up to Get Started</h2>
+      </div>
       <Formik
         initialValues={{
           firstName: '',

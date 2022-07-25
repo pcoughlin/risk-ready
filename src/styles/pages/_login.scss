@@ -43,11 +43,11 @@
   top: 0;
   z-index: 1;
   background-color: $color-white;
-  box-shadow: 0px 0px 0.8px rgba($color-black, 0.035),
-    0px 0px 6px rgba($color-black, 0.07);
+  // box-shadow: 0px 0px 0.8px rgba($color-black, 0.035),
+  //   0px 0px 6px rgba($color-black, 0.07);
 
   img {
-    height: 6rem;
+    height: 5rem;
     margin: auto 0;
     display: block;
     // margin: auto;
@@ -70,7 +70,7 @@
 
 .login,
 .signup {
-  min-width: 70%;
+  max-width: 70%;
   display: flex;
   flex-direction: column;
   gap: 2.7rem;
