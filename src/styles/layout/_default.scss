@@ -1,0 +1,230 @@
+@import '../utils/mixins';
+@import '../utils/variables';
+
+.wrapper {
+  width: calc(100% - 22rem);
+  margin: auto;
+}
+
+.top-bar {
+  margin: 2.7rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  &__search {
+    width: 40rem;
+
+    .search-form {
+      width: inherit;
+      &__group {
+        padding-left: 2rem;
+        display: flex;
+        justify-content: space-between;
+        border: solid 1px $color-gray-1;
+        border-right: transparent;
+        border-radius: 0 2.5rem 2.5rem;
+        overflow: hidden;
+      }
+      &__control {
+        width: 30rem;
+        height: 4.5rem;
+        outline: none;
+        border: none;
+        // border: solid 1px $color-gray-1;
+        // border-right: transparent;
+        // border-radius: 3rem;
+      }
+      &__icon {
+        height: inherit;
+        width: 5rem;
+        padding: 1rem;
+        display: flex;
+        background-color: $color-blue-1;
+        border: solid 4px $color-blue-1;
+        border-radius: 3.5rem;
+        border-top-left-radius: 0px;
+      }
+    }
+  }
+
+  &__notifications {
+    display: flex;
+    gap: 1rem;
+
+    .notification {
+      position: relative;
+      min-width: 4rem;
+      height: 4rem;
+      padding: 1rem;
+      border: solid 1px $color-gray-1;
+      border-radius: 50%;
+
+      &__img {
+        width: 100%;
+        height: 100%;
+      }
+
+      &__attr {
+        position: absolute;
+        padding: 0.5rem;
+        top: 70%;
+        right: 5%;
+        border-radius: 50%;
+
+        &--alert {
+          background-color: $color-red-1;
+        }
+      }
+    }
+  }
+
+  &__profile {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+
+    .name {
+      font-size: 1.2rem;
+      color: $color-blue-2;
+    }
+    .avatar {
+      width: 5rem;
+      height: 5rem;
+      //   background-color: $color-black-1;
+      border-radius: 50%;
+      //   object-fit: contain;
+      //   border-radius: 50%;
+      //   border-left: solid 4px $color-gray-2;
+      //   border-right: solid 4px $color-blue-2;
+
+      &__img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+
+    .avatar img {
+      width: 5rem;
+      height: 5rem;
+    }
+  }
+}
+
+.nav {
+  width: max-content;
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+
+  &__main {
+    width: max-content;
+    padding: 2rem 0 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: $color-blue-1;
+    border-radius: 1rem;
+  }
+  &__sub {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .main-link {
+    position: relative;
+    padding: 2rem;
+    color: $color-white;
+    border-radius: 1rem 0 0 1rem;
+
+    &:hover {
+      background-color: $color-white;
+      color: $color-blue-1;
+      cursor: pointer;
+
+      //   &::before {
+      //     position: absolute;
+      //     content: '';
+      //     display: block;
+      //     bottom: -5%;
+      //     left: 0;
+      //     // border-top-left-radius: 1rem;
+      //     border-bottom-right-radius: 2rem;
+      //     background-color: transparent;
+      //     height: 100%;
+      //     width: 100%;
+      //     z-index: 2;
+      //     box-shadow: 0 -25px 0 0 $color-white;
+      //   }
+    }
+  }
+
+  .sub-link {
+    padding: 1.6rem 2rem;
+    box-shadow: 0px 0px 2px $color-gray-6;
+    border-radius: 0.8rem;
+    color: $color-blue-1;
+    font-size: 1.2rem;
+    transition: all 200ms;
+
+    &:hover {
+      background-color: $color-blue-1;
+      color: $color-white;
+      cursor: pointer;
+    }
+  }
+
+  .widget {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    &__weather,
+    &__community {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1.4rem;
+      border: solid 1px $color-gray-1;
+      border-radius: 0.8rem;
+    }
+    &__community {
+      text-align: center;
+      font-size: 1rem;
+      color: $color-blue-2;
+    }
+    .heading {
+      font-size: 1.2rem;
+      color: $color-blue-2;
+      font-weight: bolder;
+    }
+
+    .summary {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.4rem;
+      color: $color-blue-1;
+    }
+    .percentage,
+    .total {
+      font-size: 3rem;
+      color: $color-blue-1;
+    }
+
+    & img {
+      transform: scale(0.5);
+    }
+  }
+}
+
+.body {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: 2rem;
+}

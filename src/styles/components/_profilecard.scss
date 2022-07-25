@@ -1,0 +1,57 @@
+.profile {
+  height: min-content;
+  padding: 2rem;
+  display: grid;
+  grid-auto-rows: min-content;
+  gap: 1rem;
+  border: solid 1px $color-gray-1;
+  border-radius: 0.8rem;
+  text-align: center;
+  color: $color-blue-2;
+
+  &__avatar {
+    position: relative;
+    width: 8rem;
+    height: 8rem;
+    margin: auto;
+  }
+
+  &__status {
+    position: absolute;
+    top: 10%;
+    left: 80%;
+    width: 1rem;
+    height: 1rem;
+    background-color: $color-green-1;
+    border-radius: 50%;
+  }
+
+  &__name {
+    font-size: 1.2rem;
+  }
+  &__location {
+    font-size: 1rem;
+  }
+
+  &__mutuals {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    align-items: center;
+    &--img {
+      width: 0.8rem;
+      height: 0.8rem;
+    }
+  }
+  &__duration {
+    font-size: 0.8rem;
+  }
+  &__action {
+    width: 100%;
+    padding: 1rem;
+    background-color: $color-blue-1;
+    color: $color-white;
+    border-radius: 0.2rem;
+    font-size: 0.8rem;
+  }
+}

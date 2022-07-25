@@ -1,0 +1,136 @@
+@import '../utils/mixins';
+@import '../utils/variables';
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.7rem;
+
+  &__group {
+    position: relative;
+    height: 5rem;
+    padding: 0.1rem;
+    display: flex;
+    flex-direction: column;
+    border: solid 0.1rem $color-blue-1;
+    border-radius: 0.4rem;
+
+    &--auth {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+  }
+
+  &__label {
+    position: absolute;
+    height: 1.5rem;
+    background-color: $color-white;
+    top: -0.7rem;
+    left: 1rem;
+    font-size: 1.2rem;
+  }
+
+  &__control {
+    height: 100%;
+    outline: none;
+    padding: 0 1rem;
+    border: none;
+
+    &--auth-type {
+      max-width: 4rem;
+      border: none;
+      border-bottom: solid 1px $color-gray-5;
+      outline: none;
+      transition: all 300ms;
+      text-align: center;
+      font-size: 2.4rem;
+
+      &:focus {
+        border-bottom: solid 2px $color-blue-1;
+      }
+    }
+  }
+
+  &__cta {
+    margin-top: 3rem;
+    font-size: 1.2rem;
+    text-align: center;
+    &--forgot {
+      display: block;
+      width: max-content;
+      margin-left: auto;
+      color: $color-orange-1;
+    }
+    &--signup {
+      width: 100%;
+      color: $color-gray-2;
+
+      &-link {
+        color: $color-blue-1;
+        margin: 0 0.5rem;
+      }
+    }
+    &--resend {
+      display: flex;
+      justify-content: center;
+      font-weight: bold;
+      color: $color-blue-1;
+    }
+  }
+
+  &__btn {
+    width: 100%;
+    height: 5rem;
+    border: none;
+    outline: none;
+    color: $color-white;
+    font-size: 1.4rem;
+    background-color: $color-blue-1;
+    font-weight: 700;
+    border-radius: 0.4rem;
+  }
+}
+
+.alternative {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  &__heading {
+    position: relative;
+    text-align: center;
+
+    &::before {
+      position: absolute;
+      display: block;
+      top: 50%;
+      content: '';
+      width: 45%;
+      border: solid 1px $color-gray-3;
+      height: 1px;
+    }
+    &::after {
+      position: absolute;
+      display: block;
+      bottom: 50%;
+      content: '';
+      width: 45%;
+      left: 55%;
+      border: solid 1px $color-gray-3;
+      height: 1px;
+    }
+  }
+
+  &__options {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    & img {
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+}

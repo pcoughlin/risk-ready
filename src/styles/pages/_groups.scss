@@ -1,0 +1,11 @@
+.groups {
+  display: grid;
+  grid-template-rows: min-content;
+  grid-template-columns: 3fr 1fr;
+  gap: 2rem;
+}
+
+.group {
+  display: grid;
+  gap: 2rem;
+}

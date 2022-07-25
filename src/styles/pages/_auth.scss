@@ -1,0 +1,69 @@
+// @import '../utils/mixins';
+// @import '../utils/variables';
+
+// .two-fa {
+//   max-width: 80%;
+//   display: flex;
+//   flex-direction: column;
+//   gap: 5rem;
+//   font-size: 1.4rem;
+
+//   &__text {
+//     max-width: 100%;
+//     .heading {
+//       font-size: 3.6rem;
+//       color: $color-black-1;
+//     }
+
+//     .desc {
+//       font-size: 1.2rem;
+//       color: $color-gray-4;
+//     }
+//   }
+
+//   &__form {
+//     margin: auto;
+//     display: flex;
+//     flex-direction: column;
+//     gap: 5rem;
+
+//     &-group {
+//       display: flex;
+//       gap: 2rem;
+//     }
+//   }
+
+//   &__input {
+//     max-width: 4rem;
+//     border: none;
+//     border-bottom: solid 1px $color-gray-5;
+//     outline: none;
+//     transition: all 300ms;
+//     text-align: center;
+//     font-size: 2.4rem;
+
+//     &:focus {
+//       border-bottom: solid 2px $color-blue-1;
+//     }
+//   }
+
+//   &__cta {
+//     display: flex;
+//     gap: 1rem;
+//     margin: auto;
+
+//     &--resend {
+//       font-weight: bold;
+//       color: $color-blue-1;
+//     }
+//   }
+
+//   &__btn {
+//     border: none;
+//     outline: none;
+//     background-color: $color-blue-1;
+//     color: $color-white;
+//     height: 5rem;
+//     border-radius: 0.4rem;
+//   }
+// }

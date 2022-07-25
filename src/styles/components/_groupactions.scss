@@ -1,0 +1,23 @@
+.actions {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.action {
+  width: max-content;
+  padding: 1rem 2rem;
+  border: solid 1px $color-gray-1;
+  color: $color-blue-2;
+  border-radius: 0.8rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+
+  &:hover {
+    border: solid 1px $color-blue-1;
+    color: $color-blue-1;
+  }
+}
