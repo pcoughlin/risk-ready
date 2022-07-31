@@ -1,0 +1,77 @@
+.business-card {
+  color: $color-blue-2;
+  padding: 1rem;
+  border: solid 1px $color-gray-1;
+  border-radius: 0.8rem;
+  display: grid;
+  gap: 1rem;
+
+  &__top {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  &__owner {
+    display: flex;
+    align-items: center;
+  }
+
+  &__contact {
+    display: flex;
+  }
+
+  &__user {
+    font-size: 1rem;
+  }
+  &__location {
+    margin-top: 1rem;
+
+    font-size: 1rem;
+    // font-weight: 800;
+  }
+
+  &__avatar {
+    height: 4rem;
+    width: 4rem;
+  }
+
+  &__ellipsis {
+    height: 1rem;
+    width: 3rem;
+  }
+
+  &__details {
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    gap: 2rem;
+  }
+
+  &__bio {
+    display: grid;
+    gap: 1rem;
+  }
+  &__title {
+    margin: 0.5rem 0;
+    font-size: 1.4rem;
+  }
+
+  &__summary {
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+  }
+
+  &__action {
+    width: min-content;
+    padding: 1rem 3rem;
+    background-color: $color-blue-1;
+    color: $color-white;
+    border-radius: 0.4rem;
+    text-transform: capitalize;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

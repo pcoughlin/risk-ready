@@ -1,0 +1,15 @@
+.news-card {
+  padding: 0.5rem;
+  border: solid 1px $color-gray-1;
+  border-radius: 0.8rem;
+  display: grid;
+  gap: 1rem;
+  font-size: 1.4rem;
+  color: $color-blue-2;
+
+  &__img {
+    height: 30rem;
+    border-radius: 0.8rem;
+    overflow: hidden;
+  }
+}

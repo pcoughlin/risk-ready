@@ -1,0 +1,17 @@
+.groups-layout {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 2rem;
+}
+
+.groups-column {
+  display: grid;
+  grid-auto-rows: min-content;
+  gap: 2rem;
+}
+
+.groups-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(35%, 1fr));
+  gap: 2rem;
+}

@@ -1,9 +1,15 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom'
 
 const LocalHeadline = () => {
+  const location = useLocation()
   return (
     <div className="local-headlines">
-      <h2>Local News & headlines</h2>
+      <h2>
+        {location.pathname === '/local-news'
+          ? 'Suggestions'
+          : 'Local News & headlines'}
+      </h2>
       <div className="headline">
         <div className="headline__media">
           <img

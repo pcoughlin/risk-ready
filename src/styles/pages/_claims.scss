@@ -1,0 +1,65 @@
+.claims {
+  width: 100%;
+  display: grid;
+  gap: 1rem;
+  grid-template-rows: min-content;
+
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__control {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  &__period {
+    font-size: 2.4rem;
+    color: $color-blue-2;
+  }
+
+  &__add {
+    padding: 0.5rem 3.5rem;
+    border: solid 1px $color-blue-1;
+    color: $color-blue-1;
+    border-radius: 0.8rem;
+    transition: all 300ms;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-white;
+      background-color: $color-blue-1;
+    }
+  }
+
+  &__select {
+    padding: 0.5rem 1rem;
+    border: solid 1px $color-blue-1;
+    background-color: transparent;
+    border-radius: 0.4rem;
+    outline: transparent;
+  }
+
+  &__view {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 3rem;
+  }
+}
+
+.claims-new {
+  width: calc(100% - 30rem);
+  margin: auto;
+  display: grid;
+  gap: 1rem;
+
+  @include screenSize(S) {
+    width: calc(100% - 5rem);
+  }
+
+  @include screenSize(M) {
+    width: calc(100% - 5rem);
+  }
+}

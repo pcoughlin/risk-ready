@@ -1,12 +1,32 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import { useLocation, useMatch } from 'react-router-dom'
+import SubNav from '../../components/SubNav'
+import Widget from '../../components/Widget'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Default = () => {
+  const location = useLocation()
+  const { pathname } = location
+  const newsMatch = useMatch('/local-news')
+  const claimsMatch = useMatch('/claims')
+  const propertyMatch = useMatch('/properties')
+
   return (
     <div className="wrapper">
       <div className="top-bar">
         <div className="logo">
-          <img src="/assets/images/logo-brand.svg" alt="" />
+          <img
+            src="/assets/images/logo-brand.svg"
+            alt=""
+            className="logo__desktop"
+          />
+          <img
+            src="/assets/images/logo-brand.webp"
+            alt=""
+            className="logo__mobile"
+          />
         </div>
         <div className="actions">
           <div className="actions__search">
@@ -47,52 +67,41 @@ const Default = () => {
               />
               <span className="notification__attr"></span>
             </span>
-          </div>
-          <div className="actions__profile">
-            <span className="name">John Doe</span>
-            {/* <div className="avatar"> */}
-            <img
-              src="/assets/images/user-placeholder.png"
-              alt=""
-              className="avatar"
-            />
-            {/* </div> */}
+            <div className="actions__profile">
+              <span className="name">John Doe</span>
+              {/* <div className="avatar"> */}
+              <img
+                src="/assets/images/user-placeholder.png"
+                alt=""
+                className="avatar"
+              />
+              {/* </div> */}
+            </div>
           </div>
         </div>
       </div>
       <div className="body">
         <nav className="nav">
           <div className="nav__main">
-            <div className="main-link">C</div>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? 'main-link main-link__active' : 'main-link'
+              }
+            >
+              <FontAwesomeIcon icon="fa-users" className="main-link__icon" />
+            </NavLink>
             <div className="main-link">P</div>
             <div className="main-link">C</div>
             <div className="main-link">P</div>
             <div className="main-link">V</div>
             <div className="main-link">C</div>
           </div>
-          <div className="nav__sub">
-            <div className="sub-link">Connections</div>
-            <div className="sub-link">Neighbours</div>
-            <div className="sub-link">Groups</div>
-            <div className="sub-link">Businesses</div>
-            <div className="widget">
-              <div className="widget__weather">
-                <span className="heading">Current Location</span>
-                <span className="city">Johannesburg</span>
-                <img src="/assets/images/cloud.svg" alt="cloud" />
-                <div className="summary">
-                  <span className="feel">Clear</span>
-                  <div className="span temp">42</div>
-                </div>
-              </div>
-              <div className="widget__community">
-                <span className="heading">Your Community circle</span>
-                <span className="percentage">30%</span>
-                <span className="text">members</span>
-                <span className="total">2300</span>
-                <span className="text">total</span>
-              </div>
-            </div>
+          <div className="nav__sub-widget">
+            {!newsMatch && !claimsMatch && !propertyMatch && (
+              <SubNav parentPath="home" />
+            )}
+            {!claimsMatch && !propertyMatch && <Widget />}
           </div>
         </nav>
         <Outlet />

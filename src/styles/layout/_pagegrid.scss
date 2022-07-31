@@ -1,0 +1,12 @@
+.w-grid {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 2rem;
+  grid-auto-rows: min-content;
+}
+
+.p-grid {
+  display: grid;
+  gap: 2rem;
+  grid-auto-rows: min-content;
+}

@@ -2,25 +2,77 @@
 @import '../utils/variables';
 
 .wrapper {
-  width: calc(100% - 22rem);
   margin: auto;
+
+  @include screenSize(XL) {
+    width: calc(100% - 22rem);
+  }
+
+  @include screenSize(L) {
+    width: calc(100% - 15rem);
+  }
+
+  @include screenSize(M) {
+    width: calc(100% - 8rem);
+  }
+
+  @include screenSize(S) {
+    width: calc(100% - 4rem);
+  }
 }
 
 .top-bar {
+  height: 4rem;
   margin: 2.7rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+.logo {
+  height: inherit;
+
+  &__mobile {
+    @include screenSize(L) {
+      display: none;
+    }
+    @include screenSize(XL) {
+      display: none;
+    }
+  }
+
+  &__desktop {
+    @include screenSize(M) {
+      display: none;
+    }
+    @include screenSize(S) {
+      display: none;
+    }
+  }
+}
+
 .actions {
+  height: 100%;
   display: flex;
   gap: 1rem;
+
+  @include screenSize(M) {
+    width: max-content;
+  }
+  @include screenSize(S) {
+    width: max-content;
+  }
+
   &__search {
-    width: 40rem;
+    @include screenSize(M) {
+      width: 40%;
+    }
+    @include screenSize(S) {
+      width: 40%;
+    }
 
     .search-form {
-      width: inherit;
+      width: 100%;
       &__group {
         padding-left: 2rem;
         display: flex;
@@ -31,17 +83,22 @@
         overflow: hidden;
       }
       &__control {
-        width: 30rem;
-        height: 4.5rem;
+        width: 25rem;
         outline: none;
         border: none;
+
+        @include screenSize(M) {
+          width: 100%;
+        }
+        @include screenSize(S) {
+          width: 100%;
+        }
         // border: solid 1px $color-gray-1;
         // border-right: transparent;
         // border-radius: 3rem;
       }
       &__icon {
         height: inherit;
-        width: 5rem;
         padding: 1rem;
         display: flex;
         background-color: $color-blue-1;
@@ -124,14 +181,16 @@
 
   &__main {
     width: max-content;
-    padding: 2rem 0 2rem 2rem;
+    padding: 2rem 0 2rem 0.5rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
     background-color: $color-blue-1;
     border-radius: 1rem;
   }
-  &__sub {
+  &__sub-widget,
+  &__sub,
+  &__widget {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -139,10 +198,15 @@
 
   .main-link {
     position: relative;
-    padding: 2rem;
+    padding: 0.5rem 1rem;
     color: $color-white;
     border-radius: 1rem 0 0 1rem;
 
+    &__icon {
+      font-size: 1.5rem;
+    }
+
+    &__active,
     &:hover {
       background-color: $color-white;
       color: $color-blue-1;
@@ -173,6 +237,7 @@
     font-size: 1.2rem;
     transition: all 200ms;
 
+    &__active,
     &:hover {
       background-color: $color-blue-1;
       color: $color-white;
@@ -225,6 +290,7 @@
 
 .body {
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: max-content 4fr;
   gap: 2rem;
+  padding: 2rem;
 }

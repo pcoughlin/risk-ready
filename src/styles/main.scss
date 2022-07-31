@@ -1,21 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import 'utils/mixins';
+@import 'utils/variables';
 
 @import 'base/base';
+@import 'base/typography';
 
-@import 'components/profilecard';
+@import 'components/business-card';
+@import 'components/claims-cards';
 @import 'components/feedcard';
+@import 'components/filing-form';
 @import 'components/form';
+@import 'components/gallery';
 @import 'components/groupactions';
+@import 'components/groupcard';
 @import 'components/headlines';
+@import 'components/newscard';
 @import 'components/postform';
+@import 'components/profilecard';
+@import 'components/weather';
 
 @import 'layout/default';
+@import 'layout/pagegrid';
 
+@import 'pages/claims';
+@import 'pages/connections';
+@import 'pages/discovergroups';
 @import 'pages/groupdetails';
 @import 'pages/groups';
 @import 'pages/home';
 @import 'pages/login';
-@import 'pages/connections';
-
-@import 'utils/mixins';
-@import 'utils/variables';
+@import 'pages/properties';

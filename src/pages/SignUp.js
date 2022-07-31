@@ -70,62 +70,6 @@ export const SignUp = () => {
           <FormButton type="submit" text="Sign Up"></FormButton>
         </Form>
       </Formik>
-      {/* <form action="" className="form">
-        <div className="form__group">
-          <label htmlFor="firstName" className="form__label">
-            First Name
-          </label>
-          <input type="text" name="firstName" id="" className="form__control" />
-        </div>
-        <div className="form__group">
-          <label htmlFor="lastName" className="form__label">
-            Last Name
-          </label>
-          <input
-            type="text"
-            name="lastName"
-            id="lastName"
-            className="form__control"
-          />
-        </div>
-        <div className="form__group">
-          <label htmlFor="phone" className="form__label">
-            Phone
-          </label>
-          <input type="tel" name="phone" id="phone" className="form__control" />
-        </div>
-        <div className="form__group">
-          <label htmlFor="email" className="form__label">
-            Enter Email
-          </label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            className="form__control"
-          />
-        </div>
-        <div className="form__group">
-          <label htmlFor="email" className="form__label">
-            Password
-          </label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            className="form__control"
-          />
-        </div>
-        <div className=" form__cta form__cta--signup">
-          Already have an Account?
-          <a href="/signup" className="form__cta--signup-link">
-            Sign up
-          </a>
-        </div>
-        <button type="submit" className="form__btn">
-          Login
-        </button>
-      </form> */}
     </div>
   )
 }

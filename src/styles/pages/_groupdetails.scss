@@ -80,6 +80,13 @@
           width: 3rem;
           height: 3rem;
           left: -50%;
+          border-radius: 50%;
+          padding: 0.2rem;
+          background-color: $color-white;
+
+          &:not(:first-child) {
+            margin-left: -0.8rem;
+          }
         }
       }
 

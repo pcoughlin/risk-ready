@@ -1,0 +1,101 @@
+.filing-form {
+  display: grid;
+  gap: 2rem;
+  grid-template-rows: min-content;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    gap: 5rem;
+  }
+
+  &__group {
+    display: grid;
+    gap: 1rem;
+    grid-auto-rows: min-content;
+  }
+
+  &__control {
+    width: 100%;
+    height: 4rem;
+    padding: 0.5rem 1rem;
+    background-color: $color-gray-8;
+    border: transparent;
+    outline: none;
+    border-radius: 0.6rem;
+
+    &--file {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      height: 100%;
+      opacity: 0;
+      top: 0;
+    }
+  }
+
+  &__label {
+    width: fit-content;
+    color: $color-blue-2;
+    white-space: nowrap;
+
+    &--file {
+      display: grid;
+      gap: 1rem;
+    }
+  }
+
+  &__select {
+    // width: fit-content;
+    padding: 0.5rem;
+    border: solid 1px $color-blue-1;
+    color: $color-blue-1;
+    background-color: transparent;
+    outline: none;
+  }
+
+  &__placeholder {
+    position: relative;
+    width: 10rem;
+    height: 10rem;
+    border: solid 1px $color-blue-1;
+    border-radius: 0.4rem;
+    display: flex;
+
+    &--icon {
+      display: block;
+      width: 20%;
+      height: 20%;
+      margin: auto;
+      color: $color-blue-1;
+    }
+  }
+
+  &__error {
+    font-size: 1.2rem;
+    color: $color-orange-1;
+  }
+
+  &__btn {
+    width: fit-content;
+    padding: 1rem 2rem;
+    margin-right: auto;
+    border: solid 1px $color-blue-1;
+    outline: none;
+    color: $color-blue-1;
+    font-size: 1.2rem;
+    background-color: transparent;
+    font-weight: 700;
+    border-radius: 0.4rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-blue-1;
+      color: $color-white;
+    }
+
+    &--icon {
+      margin: 0 1rem;
+    }
+  }
+}

@@ -7,10 +7,20 @@
     gap: 2rem;
     border-radius: 0.8rem;
 
+    .control--group {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(auto, max-content));
+      gap: 1rem;
+    }
+
     &__group {
       display: flex;
       gap: 1.5rem;
-      //   align-items: center;
+
+      &--controls {
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
     }
 
     &__controls {
@@ -20,7 +30,9 @@
     }
 
     &__control {
+      width: auto;
       padding: 0.5rem;
+      padding-right: 1rem;
       background-color: $color-white;
       border-radius: 3rem;
       display: flex;
@@ -44,7 +56,6 @@
 
       &--btn {
         padding: 1rem;
-        margin-left: auto;
         background-color: $color-blue-2;
         border: none;
         outline: none;

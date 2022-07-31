@@ -21,9 +21,33 @@ import {
   faHome,
   faBriefcase,
   faPencil,
+  faCloud,
+  faComments,
+  faChevronCircleRight,
+  faEnvelope,
+  faCirclePlay,
+  faMicrophone,
+  faVideo,
+  faMessage,
+  faPaperPlane,
+  faCirclePause,
+  faPhotoVideo,
+  faCloudUpload,
 } from '@fortawesome/free-solid-svg-icons'
+import DiscoverGroups from './pages/DiscoverGroups'
+import MyGroups from './pages/MyGroups'
+import BusinessList from './pages/BusinessList'
+import MyBusiness from './pages/MyBusiness'
+import LocalNews from './pages/LocalNews'
+import Claims from './pages/Claims'
+import Properties from './pages/Properties'
 
 library.add(
+  faEnvelope,
+  faCirclePlay,
+  faMicrophone,
+  faVideo,
+  faMessage,
   faUsers,
   faCompass,
   faPlus,
@@ -31,6 +55,13 @@ library.add(
   faHome,
   faBriefcase,
   faPencil,
+  faCloud,
+  faComments,
+  faChevronCircleRight,
+  faPaperPlane,
+  faCirclePause,
+  faPhotoVideo,
+  faCloudUpload,
 )
 
 function App() {
@@ -43,8 +74,17 @@ function App() {
           <Route path="neighbours" element={<Neighbours />} />
           <Route path="groups">
             <Route path=":id" element={<GroupDetails />} />
-            <Route path="feeds" element={<GroupFeeds />} />
+            <Route path="feeds" index={true} element={<GroupFeeds />} />
+            <Route path="discover" element={<DiscoverGroups />} />
+            <Route path="my" element={<MyGroups />} />
           </Route>
+          <Route path="business">
+            <Route path="" exact index={true} element={<BusinessList />} />
+            <Route path="my" element={<MyBusiness />} />
+          </Route>
+          <Route path="/local-news" element={<LocalNews />} />
+          <Route path="/claims" element={<Claims />} />
+          <Route path="/properties" element={<Properties />} />
         </Route>
         <Route path="/auth" element={<Auth />}>
           <Route path="" index={true} element={<Login />} />

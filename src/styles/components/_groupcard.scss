@@ -1,0 +1,85 @@
+.discover-card {
+  border-radius: 0.8rem;
+  overflow: hidden;
+  box-shadow: 0px 0px 6px rgb($color-black, 0.29);
+
+  &__img {
+    height: 12rem;
+  }
+
+  &__bottom {
+    padding: 1rem;
+    display: grid;
+    gap: 1rem;
+  }
+
+  &__desc {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__name {
+    font-size: 1.4rem;
+  }
+  &__count {
+    font-size: 1.2rem;
+
+    & > :nth-child(1) {
+      font-size: 0.7rem;
+      color: $color-blue-1;
+    }
+  }
+  &__location {
+    font-size: 1.1rem;
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__members {
+    display: flex;
+  }
+
+  &__member {
+    width: 4rem;
+    height: 4rem;
+
+    &:not(:first-child) {
+      border: solid 0.2rem $color-white;
+      border-radius: 50%;
+      margin-left: -0.8rem;
+    }
+  }
+
+  &__action {
+    padding: 0.8rem 3rem;
+    font-size: 1rem;
+    border-radius: 0.4rem;
+    text-transform: capitalize;
+
+    &--join {
+      background-color: $color-blue-1;
+      color: $color-white;
+
+      &:hover {
+        background-color: $color-white;
+        color: $color-blue-1;
+        border: solid 1px $color-blue-1;
+      }
+    }
+
+    &--view {
+      background-color: $color-white;
+      border: solid 1px $color-blue-1;
+      color: $color-blue-1;
+
+      &:hover {
+        background-color: $color-blue-1;
+        color: $color-white;
+      }
+    }
+  }
+}
