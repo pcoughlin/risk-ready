@@ -1,0 +1,43 @@
+.insurance-card {
+  max-width: 50rem;
+  padding: 2rem 3rem;
+  display: grid;
+  gap: 2rem;
+  border: solid 1px $color-gray-1;
+  border-radius: 0.8rem;
+  color: $color-blue-2;
+
+  &__heading {
+    font-weight: 600;
+  }
+
+  &__summary {
+    font-size: 1.2rem;
+  }
+
+  &__control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $color-blue-1;
+
+    &--name {
+      font-size: 1.2rem;
+    }
+    &--download {
+      border: solid 1px $color-blue-1;
+      padding: 0.5rem 1rem;
+      display: flex;
+      gap: 1rem;
+      border-radius: 0.3rem;
+      transition: all 400ms;
+      font-size: 1.2rem;
+
+      &:hover {
+        background-color: $color-blue-1;
+        color: $color-white;
+        cursor: pointer;
+      }
+    }
+  }
+}

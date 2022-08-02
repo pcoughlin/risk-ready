@@ -1,0 +1,15 @@
+.upload {
+  width: min-content;
+  padding: 0.5rem 1rem;
+  display: flex;
+  gap: 1rem;
+  color: $color-blue-1;
+  border: solid 1px $color-blue-1;
+  border-radius: 0.3rem;
+
+  &:hover {
+    background-color: $color-blue-1;
+    color: $color-white;
+    cursor: pointer;
+  }
+}

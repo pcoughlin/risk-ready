@@ -12,6 +12,10 @@ const Default = () => {
   const newsMatch = useMatch('/local-news')
   const claimsMatch = useMatch('/claims')
   const propertyMatch = useMatch('/properties')
+  const projectMatch = useMatch('/projects')
+  const vaultMatch = useMatch('/vault')
+  const projectDocumentsMatch = useMatch('/vault/project-documents')
+  const claimsFilesmatch = useMatch('/vault/claims-files')
 
   return (
     <div className="wrapper">
@@ -84,24 +88,81 @@ const Default = () => {
         <nav className="nav">
           <div className="nav__main">
             <NavLink
-              to="/"
+              to="/communities"
               className={({ isActive }) =>
                 isActive ? 'main-link main-link__active' : 'main-link'
               }
             >
               <FontAwesomeIcon icon="fa-users" className="main-link__icon" />
             </NavLink>
-            <div className="main-link">P</div>
-            <div className="main-link">C</div>
-            <div className="main-link">P</div>
-            <div className="main-link">V</div>
-            <div className="main-link">C</div>
+            <NavLink
+              to="/projects"
+              className={({ isActive }) =>
+                isActive ? 'main-link main-link__active' : 'main-link'
+              }
+            >
+              <FontAwesomeIcon
+                icon="fa-solid fa-file-lines"
+                className="main-link__icon"
+              />
+            </NavLink>
+            <NavLink
+              to="/claims"
+              className={({ isActive }) =>
+                isActive ? 'main-link main-link__active' : 'main-link'
+              }
+            >
+              <FontAwesomeIcon
+                icon="fa-solid fa-umbrella"
+                className="main-link__icon"
+              />
+            </NavLink>
+            <NavLink
+              to="/properties"
+              className={({ isActive }) =>
+                isActive ? 'main-link main-link__active' : 'main-link'
+              }
+            >
+              <FontAwesomeIcon
+                icon="fa-solid fa-house-chimney"
+                className="main-link__icon"
+              />
+            </NavLink>
+            <NavLink
+              to="/vault"
+              className={
+                pathname.indexOf('/vault') > -1
+                  ? 'main-link main-link__active'
+                  : 'main-link'
+              }
+            >
+              <FontAwesomeIcon
+                icon="fa-solid fa-clipboard-list"
+                className="main-link__icon"
+              />
+            </NavLink>
+            <NavLink
+              to="/contact"
+              className={({ isActive }) =>
+                isActive ? 'main-link main-link__active' : 'main-link'
+              }
+            >
+              <FontAwesomeIcon
+                icon="fa-solid fa-location-dot"
+                className="main-link__icon"
+              />
+            </NavLink>
           </div>
           <div className="nav__sub-widget">
-            {!newsMatch && !claimsMatch && !propertyMatch && (
-              <SubNav parentPath="home" />
+            {!newsMatch && !claimsMatch && !propertyMatch && !projectMatch && (
+              <SubNav parentPath="communities" />
             )}
-            {!claimsMatch && !propertyMatch && <Widget />}
+            {!claimsMatch &&
+              !propertyMatch &&
+              !projectMatch &&
+              !vaultMatch &&
+              !claimsFilesmatch &&
+              !projectDocumentsMatch && <Widget />}
           </div>
         </nav>
         <Outlet />

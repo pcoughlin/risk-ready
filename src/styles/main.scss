@@ -6,6 +6,7 @@
 
 @import 'components/business-card';
 @import 'components/claims-cards';
+@import 'components/contractorcard';
 @import 'components/feedcard';
 @import 'components/filing-form';
 @import 'components/form';
@@ -13,9 +14,11 @@
 @import 'components/groupactions';
 @import 'components/groupcard';
 @import 'components/headlines';
+@import 'components/insurancecard';
 @import 'components/newscard';
 @import 'components/postform';
 @import 'components/profilecard';
+@import 'components/uploadbtn';
 @import 'components/weather';
 
 @import 'layout/default';
@@ -28,4 +31,6 @@
 @import 'pages/groups';
 @import 'pages/home';
 @import 'pages/login';
+@import 'pages/projects';
 @import 'pages/properties';
+@import 'pages/vault';

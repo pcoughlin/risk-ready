@@ -43,8 +43,26 @@
   }
 
   &__heading {
+    display: flex;
     padding: 1rem 2rem;
     border-bottom: solid 1px $color-gray-1;
+
+    &--info {
+      display: flex;
+      gap: 1rem;
+    }
+    &--img {
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 50%;
+    }
+
+    &--name {
+      font-size: 1.2rem;
+    }
+    &--title {
+      font-size: 1rem;
+    }
   }
 
   &__content {

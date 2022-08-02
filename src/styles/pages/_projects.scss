@@ -1,0 +1,38 @@
+.projects {
+  display: grid;
+  gap: 3rem;
+  grid-auto-rows: min-content;
+  &__heading {
+    font-size: large;
+    color: $color-blue-2;
+  }
+
+  &__grid {
+    margin: auto;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 10rem;
+
+    @include screenSize(M) {
+      width: 70%;
+      grid-template-columns: 1fr;
+      gap: 5rem;
+    }
+    @include screenSize(S) {
+      width: 90%;
+      grid-template-columns: 1fr;
+      gap: 5rem;
+    }
+  }
+
+  &__contractors {
+    // flex: 1 0 30%;
+    display: grid;
+    grid-auto-rows: min-content;
+    gap: 2rem;
+    color: $color-blue-1;
+  }
+  &__communication {
+    // flex: 1 0 50%;
+  }
+}

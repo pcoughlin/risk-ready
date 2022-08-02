@@ -33,6 +33,11 @@ import {
   faCirclePause,
   faPhotoVideo,
   faCloudUpload,
+  faClipboardList,
+  faUmbrella,
+  faHouseChimney,
+  faLocationDot,
+  faCloudArrowDown,
 } from '@fortawesome/free-solid-svg-icons'
 import DiscoverGroups from './pages/DiscoverGroups'
 import MyGroups from './pages/MyGroups'
@@ -41,6 +46,11 @@ import MyBusiness from './pages/MyBusiness'
 import LocalNews from './pages/LocalNews'
 import Claims from './pages/Claims'
 import Properties from './pages/Properties'
+import Projects from './pages/Projects'
+import Vault from './pages/Vault'
+import InsurancePolicies from './pages/InsurancePolicies'
+import ProjectDocuments from './pages/ProjectDocuments'
+import ClaimsFiles from './pages/ClaimsFiles'
 
 library.add(
   faEnvelope,
@@ -62,6 +72,12 @@ library.add(
   faCirclePause,
   faPhotoVideo,
   faCloudUpload,
+  faClipboardList,
+  faFileLines,
+  faUmbrella,
+  faHouseChimney,
+  faLocationDot,
+  faCloudArrowDown,
 )
 
 function App() {
@@ -69,22 +85,34 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Default />}>
-          <Route path="" index={true} element={<Home />} />
-          <Route path="connections" element={<Connections />} />
-          <Route path="neighbours" element={<Neighbours />} />
-          <Route path="groups">
-            <Route path=":id" element={<GroupDetails />} />
-            <Route path="feeds" index={true} element={<GroupFeeds />} />
-            <Route path="discover" element={<DiscoverGroups />} />
-            <Route path="my" element={<MyGroups />} />
+          <Route path="communities">
+            <Route path="" index={true} element={<Home />} />
+            <Route path="connections" element={<Connections />} />
+            <Route path="neighbours" element={<Neighbours />} />
+            <Route path="groups">
+              <Route path=":id" element={<GroupDetails />} />
+              <Route path="" index={true} element={<GroupFeeds />} />
+              <Route path="discover" element={<DiscoverGroups />} />
+              <Route path="my" element={<MyGroups />} />
+            </Route>
+            <Route path="business">
+              <Route path="" exact index={true} element={<BusinessList />} />
+              <Route path="my" element={<MyBusiness />} />
+            </Route>
           </Route>
-          <Route path="business">
-            <Route path="" exact index={true} element={<BusinessList />} />
-            <Route path="my" element={<MyBusiness />} />
+          <Route path="/vault">
+            <Route path="" index={true} element={<InsurancePolicies />} />
+            <Route
+              path="project-documents"
+              index={true}
+              element={<ProjectDocuments />}
+            />
+            <Route path="claims-files" index={true} element={<ClaimsFiles />} />
           </Route>
           <Route path="/local-news" element={<LocalNews />} />
           <Route path="/claims" element={<Claims />} />
           <Route path="/properties" element={<Properties />} />
+          <Route path="/projects" element={<Projects />} />
         </Route>
         <Route path="/auth" element={<Auth />}>
           <Route path="" index={true} element={<Login />} />

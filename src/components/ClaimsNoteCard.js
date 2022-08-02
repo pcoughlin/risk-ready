@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useState, useRef } from 'react'
 
-const ClaimsNoteCard = () => {
+const ClaimsNoteCard = ({ parent }) => {
   const [play, setPlay] = useState(false)
   const [audioTimer, setAudioTimer] = useState(0)
   const [duration, setDuration] = useState(0)
@@ -39,7 +39,24 @@ const ClaimsNoteCard = () => {
 
   return (
     <div className=" note note__card">
-      <div className="note__heading">Claim Notes</div>
+      <div className="note__heading">
+        {parent === 'contractor' && (
+          <>
+            <div className="note__heading--info">
+              <img
+                src="/assets/images/contractor.png"
+                alt=""
+                className="note__heading--img"
+              />
+              <div className="">
+                <p className="note__heading--name">James Gunn</p>
+                <span className="note__heading--title">Contractor</span>
+              </div>
+            </div>
+            <div className="note__heading--media"></div>
+          </>
+        )}
+      </div>
       <div className="note__content">
         <div className="note__text">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga vero

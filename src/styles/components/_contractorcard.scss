@@ -1,0 +1,46 @@
+.contractor {
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: solid 1px $color-blue-1;
+  border-radius: 0.6rem;
+
+  &__info {
+    width: max-content;
+    display: flex;
+    gap: 0.7rem;
+    align-items: center;
+
+    &--img {
+      width: 3.5rem;
+      height: 3.5rem;
+    }
+
+    &--name {
+      color: $color-blue-2;
+      font-size: 1.2rem;
+      white-space: nowrap;
+    }
+
+    &--title {
+      color: $color-blue-2;
+      font-size: 1rem;
+    }
+  }
+  &__action {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    border: solid 1px $color-blue-1;
+    padding: 0.5rem 1rem;
+    border-radius: 0.4rem;
+    color: $color-blue-1;
+
+    &--icon {
+      font-size: 1rem;
+    }
+    &--text {
+    }
+  }
+}
