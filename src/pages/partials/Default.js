@@ -88,7 +88,7 @@ const Default = () => {
         <nav className="nav">
           <div className="nav__main">
             <NavLink
-              to="/communities"
+              to="/"
               className={({ isActive }) =>
                 isActive ? 'main-link main-link__active' : 'main-link'
               }

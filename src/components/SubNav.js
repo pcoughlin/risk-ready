@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-const SubNav = ({}) => {
+const SubNav = () => {
   let location = useLocation()
+  let navigate = useNavigate()
   let currentPath = location.pathname.split('/')[1]
+
+  if (!currentPath) {
+    navigate('/communities', { replace: true })
+  }
 
   console.log(location)
   const possiblePaths = {}
@@ -24,15 +30,21 @@ const SubNav = ({}) => {
     let capitalised = words.map(
       (word) => word.charAt(0).toUpperCase() + word.slice(1),
     )
-    console.log(capitalised)
     let cap = capitalised.splice(0, 1, ' ').concat(capitalised)
     return cap
-    console.log(cap)
-    // path.charAt(0).toUpperCase() + path.slice(1);
   }
+  useEffect(() => {
+    if (!currentPath) {
+      navigate('/communities', { replace: true })
+    }
+
+    return () => {}
+  }, [])
 
   return (
     <div className="nav__sub">
+      {/* {!currentPath && <Navigate to="/communities" replace={true} />} */}
+
       {possiblePaths[currentPath]
         ? possiblePaths[currentPath].map((path, index) => (
             <NavLink

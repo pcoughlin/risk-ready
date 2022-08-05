@@ -1,4 +1,5 @@
 import './styles/main.scss'
+import { useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Auth from './pages/partials/Auth'
 import { TwoFactor } from './pages/TwoFactor'
@@ -10,6 +11,9 @@ import Connections from './pages/Connections'
 import Neighbours from './pages/Neighbours'
 import { GroupFeeds } from './pages/GroupFeeds'
 import GroupDetails from './pages/GroupDetails'
+
+import { useNavigate } from 'react-router-dom'
+import { useToken } from './utils/useToken'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 
@@ -81,6 +85,16 @@ library.add(
 )
 
 function App() {
+  const navigate = useNavigate()
+  const { token, setToken } = useToken()
+
+  useEffect(() => {
+    if (!token) {
+      navigate('/auth')
+    }
+    return () => {}
+  }, [])
+
   return (
     <div className="App">
       <Routes>

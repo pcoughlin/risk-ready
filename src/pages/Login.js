@@ -1,11 +1,19 @@
 import React from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-
 import TextInput from '../components/TextInput'
 import FormButton from '../components/FormButton'
 
+import { signIn } from '../store/actions/authActions'
+import { useDispatch } from 'react-redux'
+
 const Login = () => {
+  const dispatch = useDispatch()
+  const handleLogin = (e, values) => {
+    console.log(values)
+    dispatch(signIn(e))
+  }
+
   return (
     <div className="login">
       <Formik
@@ -18,6 +26,7 @@ const Login = () => {
             .required('Please enter your password')
             .min(4, 'Password must be at least 4 characters long'),
         })}
+        onSubmit={handleLogin}
       >
         <Form className="form">
           <TextInput label="Email" type="email" name="email" id="email" />
