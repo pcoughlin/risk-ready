@@ -1,6 +1,11 @@
 @import '../utils/mixins';
 @import '../utils/variables';
 
+.app {
+  width: 100%;
+  // position: relative;
+}
+
 .wrapper {
   margin: auto;
 
@@ -22,11 +27,15 @@
 }
 
 .top-bar {
-  height: 4rem;
-  margin: 2.7rem 0;
+  position: sticky;
+  top: 0;
+  height: auto;
+  padding: 2.7rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: $color-white;
+  z-index: 1;
 }
 
 .logo {
@@ -51,7 +60,7 @@
   }
 }
 
-.actions {
+.user {
   height: 100%;
   display: flex;
   gap: 1rem;
@@ -141,6 +150,7 @@
   }
 
   &__profile {
+    position: relative;
     display: flex;
     gap: 1rem;
     align-items: center;
@@ -149,15 +159,11 @@
       font-size: 1.2rem;
       color: $color-blue-2;
     }
-    .avatar {
+    &--avatar {
       width: 5rem;
       height: 5rem;
-      //   background-color: $color-black-1;
       border-radius: 50%;
-      //   object-fit: contain;
-      //   border-radius: 50%;
-      //   border-left: solid 4px $color-gray-2;
-      //   border-right: solid 4px $color-blue-2;
+      cursor: pointer;
 
       &__img {
         width: 100%;
@@ -169,6 +175,86 @@
     .avatar img {
       width: 5rem;
       height: 5rem;
+    }
+  }
+
+  &__options {
+    position: absolute;
+    height: auto;
+    padding: 2rem;
+    width: max-content;
+    top: 100%;
+    right: 0;
+    display: none;
+    box-shadow: 0px 4px 14px rgba($color-gray-1, 0.6);
+    z-index: 1;
+    background-color: $color-white;
+    border-radius: 1rem;
+
+    &--visible {
+      display: block;
+    }
+  }
+
+  &__option {
+    &--flex {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      padding-bottom: 1.5rem;
+
+      p {
+        margin: 0.5rem 0;
+      }
+    }
+    &--border {
+      border-bottom: solid 1px $color-gray-1;
+    }
+
+    &--group {
+      padding: 2rem 0;
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    &--heading {
+      color: $color-blue-1;
+    }
+
+    &--action {
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      &:hover {
+        background-color: $color-blue-1;
+        color: $color-white;
+      }
+    }
+
+    &--icon {
+      color: $color-blue-1;
+    }
+  }
+
+  &__text {
+    &--bold {
+      font-weight: 700;
+    }
+    &--faded {
+      color: $color-gray-3;
+    }
+  }
+
+  &__btn {
+    padding: 0.5rem 1rem;
+    border: solid 1px $color-blue-1;
+    color: $color-blue-1;
+    border-radius: 0.4rem;
+
+    &:hover {
+      background-color: $color-blue-1;
+      color: $color-white;
     }
   }
 }

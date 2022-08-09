@@ -42,6 +42,10 @@ import {
   faHouseChimney,
   faLocationDot,
   faCloudArrowDown,
+  faUserPlus,
+  faCircleQuestion,
+  faArrowRightToBracket,
+  faCircleXmark,
 } from '@fortawesome/free-solid-svg-icons'
 import DiscoverGroups from './pages/DiscoverGroups'
 import MyGroups from './pages/MyGroups'
@@ -55,6 +59,16 @@ import Vault from './pages/Vault'
 import InsurancePolicies from './pages/InsurancePolicies'
 import ProjectDocuments from './pages/ProjectDocuments'
 import ClaimsFiles from './pages/ClaimsFiles'
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { useDispatch, useSelector } from 'react-redux'
+import EditProfile from './pages/EditProfile'
+import { closeModal } from './store/actions/modalActions'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import ForgotPassword from './pages/ForgotPassword'
+import ResetPassword from './pages/ResetPassword'
+import PasswordReset from './pages/PasswordReset'
+import VaultUploadModal from './components/VaultUploadModal'
 
 library.add(
   faEnvelope,
@@ -82,21 +96,78 @@ library.add(
   faHouseChimney,
   faLocationDot,
   faCloudArrowDown,
+  faUserPlus,
+  faCircleQuestion,
+  faArrowRightToBracket,
+  faCircleXmark,
 )
 
 function App() {
   const navigate = useNavigate()
-  const { token, setToken } = useToken()
+  const dispatch = useDispatch()
+  const { token, setToken, getToken } = useToken()
+
+  const { isLoggedIn, errorMsg, responseMsg, isLoading } = useSelector(
+    (state) => state.auth,
+  )
+
+  const { overlay, profileModal, modalTitle, vaultModal } = useSelector(
+    (state) => state.modals,
+  )
+
+  const { vaultResponse, vaultError } = useSelector((state) => state.upload)
 
   useEffect(() => {
+    const token = getToken()
+
     if (!token) {
       navigate('/auth')
     }
+    if (isLoading) {
+      toast.loading('Please hold on...', { toastId: 'pending' })
+    }
+    if (errorMsg || vaultError) {
+      toast.dismiss('pending')
+      toast.error(errorMsg || vaultError, { toastId: 'error' })
+    }
+    if (responseMsg || vaultResponse) {
+      toast.dismiss('pending')
+      toast.success(responseMsg || vaultResponse, { toastId: 'success' })
+    }
+
     return () => {}
-  }, [])
+  }, [
+    isLoggedIn,
+    errorMsg,
+    isLoading,
+    responseMsg,
+    navigate,
+    dispatch,
+    getToken,
+    overlay,
+    vaultResponse,
+    vaultError,
+  ])
 
   return (
-    <div className="App">
+    <div className="app">
+      <ToastContainer position="top-right" autoClose={5000} limit={3} />
+      {overlay && (
+        <div className="overlay">
+          <div className="modal">
+            <div className="modal__head">
+              {/* <span>{modalTitle}</span> */}
+              <FontAwesomeIcon
+                icon="fa-circle-xmark"
+                onClick={() => dispatch(closeModal())}
+                className="close"
+              />
+            </div>
+            {profileModal && <EditProfile />}
+            {vaultModal && <VaultUploadModal />}
+          </div>
+        </div>
+      )}
       <Routes>
         <Route path="/" element={<Default />}>
           <Route path="communities">
@@ -132,7 +203,10 @@ function App() {
           <Route path="" index={true} element={<Login />} />
           <Route path=":two-factor" element={<TwoFactor />} />
           <Route path=":signup" exact element={<SignUp />} />
+          <Route path=":forgot-password" exact element={<PasswordReset />} />
+          {/* <Route path="password-reset" exact element={<ResetPassword />} /> */}
         </Route>
+        <Route path="/profile/edit" element={<EditProfile />} />
       </Routes>
     </div>
   )

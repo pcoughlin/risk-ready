@@ -11,7 +11,7 @@ const SubNav = () => {
     navigate('/communities', { replace: true })
   }
 
-  console.log(location)
+  // console.log(location)
   const possiblePaths = {}
   possiblePaths.communities = [
     'Connections',

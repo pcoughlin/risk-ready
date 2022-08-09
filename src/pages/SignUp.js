@@ -4,14 +4,29 @@ import * as Yup from 'yup'
 
 import TextInput from '../components/TextInput'
 import FormButton from '../components/FormButton'
+import { NavLink } from 'react-router-dom'
+
+import { useDispatch } from 'react-redux'
+import { signUp } from '../store/actions/authActions'
 
 export const SignUp = () => {
+  const dispatch = useDispatch()
+  let userData = {}
+
+  const registerUser = (values) => {
+    for (const [key, value] of Object.entries(values)) {
+      userData[key] = value
+    }
+    // console.log(userData)
+    dispatch(signUp(userData))
+  }
+
   const validPhone = /^[+]?[\s./0-9]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-s\.0-9]{7,14}$/g
   const validations = Yup.object({
-    firstName: Yup.string()
+    first_name: Yup.string()
       .min(2, 'Name should contain at least two characters')
       .required('You should have a First Name'),
-    lastName: Yup.string()
+    last_name: Yup.string()
       .required('You have a last name, enter it')
       .min(2, 'Name requires minimum of 2 characters'),
     phone: Yup.string()
@@ -32,26 +47,27 @@ export const SignUp = () => {
       </div>
       <Formik
         initialValues={{
-          firstName: '',
-          lastName: '',
+          first_name: '',
+          last_name: '',
           phone: '',
           email: '',
           password: '',
         }}
         validationSchema={validations}
+        onSubmit={registerUser}
       >
         <Form className="form">
           <TextInput
             label="First Name"
             type="text"
-            id="firstName"
-            name="firstName"
+            id="first_name"
+            name="first_name"
           />
           <TextInput
             label="Last Name"
             type="text"
-            id="lastName"
-            name="lastName"
+            id="last_name"
+            name="last_name"
           />
           <TextInput label="Phone" type="tel" id="phone" name="phone" />
           <TextInput label="Email" type="email" name="email" id="email" />
@@ -63,9 +79,9 @@ export const SignUp = () => {
           />
           <div className=" form__cta form__cta--signup">
             Already have an Account?
-            <a href="/signup" className="form__cta--signup-link">
-              Sign up
-            </a>
+            <NavLink to="/auth" className="form__cta--signup-link">
+              Sign In
+            </NavLink>
           </div>
           <FormButton type="submit" text="Sign Up"></FormButton>
         </Form>

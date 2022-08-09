@@ -39,6 +39,7 @@ const NewProperty = () => {
           serialNo: '',
           manufacturer: '',
         }}
+        validationSchema={validationRule}
       >
         <Form>
           <div className="property__form">

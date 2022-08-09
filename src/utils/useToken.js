@@ -14,6 +14,7 @@ export const useToken = () => {
 
   return {
     setToken: saveToken,
+    getToken,
     token,
   }
 }

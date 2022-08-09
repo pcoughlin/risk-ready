@@ -1,19 +1,72 @@
+import { useToken } from '../../utils/useToken'
+
 const initialState = {
-  loading: false,
-  user: { message: '', data: {} },
-  error: null,
+  isLoading: false,
+  user: {},
+  errorMsg: null,
+  responseMsg: null,
+  isLoggedIn: false,
+  tempUser: {},
 }
 
 export const auth = (state = initialState, { type, payload }) => {
   switch (type) {
     case 'LOADING':
-      return { ...state, loading: true }
+      return { ...state, isLoading: true }
+
+    case 'CLEAR_ERROR':
+      return { ...state, errorMsg: null }
+
+    case 'CLEAR_RESPONSE':
+      return { ...state, responseMsg: null }
 
     case 'SIGN_IN':
-      return { ...state, loading: false, user: payload, error: null }
+      localStorage.setItem('risk-ready-token', JSON.stringify(payload.data))
+      return {
+        ...state,
+        isLoading: false,
+        user: payload.data,
+        error: null,
+        isLoggedIn: true,
+      }
+
+    case 'SIGN_UP':
+      return {
+        ...state,
+        isLoading: false,
+        responseMsg: payload,
+      }
 
     case 'SIGN_IN_ERROR':
-      return { ...state, loading: false, user: null, error: payload }
+      return { ...state, isLoading: false, user: null, errorMsg: payload }
+
+    case 'SIGN_UP_ERROR':
+      return { ...state, isLoading: false, errorMsg: payload }
+
+    case 'PROFILE_UPDATE':
+      return { ...state, isLoading: false, responseMsg: payload }
+
+    case 'FORGOT_PASSWORD':
+      localStorage.setItem('risk-ready-temp', JSON.stringify(payload.data))
+      return {
+        ...state,
+        isLoading: false,
+        errorMsg: null,
+        tempUser: payload.data,
+        responseMsg: payload.message,
+      }
+
+    case 'RESET_PASSWORD':
+      localStorage.setItem('risk-ready-token', JSON.stringify(payload.data))
+      return {
+        ...state,
+        isLoading: false,
+        user: payload.data,
+        error: null,
+        isLoggedIn: true,
+      }
+    case 'RESET_ERROR':
+      return { ...state, isLoading: false, user: null, errorMsg: payload }
 
     default:
       return state

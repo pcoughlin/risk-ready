@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { Outlet } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
 import { useLocation, useMatch } from 'react-router-dom'
 import SubNav from '../../components/SubNav'
 import Widget from '../../components/Widget'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useDispatch, useSelector } from 'react-redux'
+import { editProfile } from '../../store/actions/modalActions'
+import { useCloseOption } from '../../utils/closeOption'
 
 const Default = () => {
+  const dispatch = useDispatch()
   const location = useLocation()
   const { pathname } = location
   const newsMatch = useMatch('/local-news')
@@ -16,6 +20,23 @@ const Default = () => {
   const vaultMatch = useMatch('/vault')
   const projectDocumentsMatch = useMatch('/vault/project-documents')
   const claimsFilesmatch = useMatch('/vault/claims-files')
+
+  const { user } = useSelector((state) => state.auth)
+
+  const [authUser, setAuthUser] = useState()
+  const [userOptions, setUserOptions] = useState(false)
+  const userOptionsRef = useRef(null)
+  useCloseOption(userOptionsRef, setUserOptions)
+
+  useEffect(() => {
+    if (Object.keys(user).length === 0) {
+      const loggedInUser = JSON.parse(localStorage.getItem('risk-ready-token'))
+      setAuthUser(loggedInUser)
+    } else {
+      setAuthUser(user)
+    }
+    return () => {}
+  }, [])
 
   return (
     <div className="wrapper">
@@ -32,8 +53,8 @@ const Default = () => {
             className="logo__mobile"
           />
         </div>
-        <div className="actions">
-          <div className="actions__search">
+        <div className="user">
+          <div className="user__search">
             <form className="search-form">
               <div className="search-form__group">
                 <input
@@ -47,7 +68,7 @@ const Default = () => {
               </div>
             </form>
           </div>
-          <div className="actions__notifications">
+          <div className="user__notifications">
             <span className="notification">
               <img
                 src="/assets/images/chat-bubbles.svg"
@@ -71,15 +92,61 @@ const Default = () => {
               />
               <span className="notification__attr"></span>
             </span>
-            <div className="actions__profile">
-              <span className="name">John Doe</span>
+            <div className="user__profile">
+              <span className="name">{`${authUser?.first_name} ${authUser?.last_name}`}</span>
               {/* <div className="avatar"> */}
               <img
                 src="/assets/images/user-placeholder.png"
                 alt=""
-                className="avatar"
+                className="user__profile--avatar"
+                onClick={() => setUserOptions(!userOptions)}
+                ref={userOptionsRef}
               />
               {/* </div> */}
+              <div
+                className={`user__options ${
+                  userOptions ? 'user__options--visible' : ''
+                }`}
+              >
+                <div className="user__option user__option--flex user__option--border">
+                  <div className="">
+                    <p className="user__text--bold">{`${authUser?.first_name} ${authUser?.last_name}`}</p>
+                    <p className="user__text--faded">{authUser?.email}</p>
+                  </div>
+                  <div
+                    // to="/profile/edit"
+                    className="user__btn"
+                    onClick={() => dispatch(editProfile('Edit Profile'))}
+                  >
+                    Edit
+                  </div>
+                </div>
+                <div className="user__option--group user__option--border">
+                  <h4 className="user__option--heading">Account</h4>
+                  <div className="user__option--action">
+                    <FontAwesomeIcon
+                      icon="fa fa-user-plus"
+                      className="user__option--icon"
+                    />
+
+                    <span className="user__option--text">Invite</span>
+                  </div>
+                  <div className="user__option--action">
+                    <FontAwesomeIcon
+                      icon="fa fa-circle-question"
+                      className="user__option--icon"
+                    />
+                    <span className="user__option--text">Help & Support</span>
+                  </div>
+                </div>
+                <div className="user__option--action">
+                  <FontAwesomeIcon
+                    icon="fa fa-arrow-right-to-bracket"
+                    className="user__option--icon"
+                  />
+                  <span className="user__option--text">Log Out</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

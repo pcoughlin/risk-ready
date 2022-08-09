@@ -1,18 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import TextInput from '../components/TextInput'
 import FormButton from '../components/FormButton'
+import { NavLink } from 'react-router-dom'
 
 import { signIn } from '../store/actions/authActions'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
   const dispatch = useDispatch()
-  const handleLogin = (e, values) => {
-    console.log(values)
-    dispatch(signIn(e))
+  const navigate = useNavigate()
+
+  const { isLoggedIn } = useSelector((state) => state.auth)
+
+  const handleLogin = (values) => {
+    dispatch(signIn({ email: values.email, password: values.password }))
   }
+
+  useEffect(() => {
+    isLoggedIn && navigate('/')
+    return () => {}
+  }, [isLoggedIn, navigate])
 
   return (
     <div className="login">
@@ -26,7 +36,7 @@ const Login = () => {
             .required('Please enter your password')
             .min(4, 'Password must be at least 4 characters long'),
         })}
-        onSubmit={handleLogin}
+        onSubmit={(values) => handleLogin(values)}
       >
         <Form className="form">
           <TextInput label="Email" type="email" name="email" id="email" />
@@ -37,57 +47,23 @@ const Login = () => {
             id="password"
           />
           <div className="form__cta">
-            <a href="/forgot-password" className="form__cta--forgot">
+            <NavLink to="/auth/forgot-password" className="form__cta--forgot">
               Forgot Password
-            </a>
+            </NavLink>
           </div>
           <div className=" form__cta form__cta--signup">
             Don't Have an Account?
-            <a href="/signup" className="form__cta--signup-link">
+            <NavLink
+              to="/auth/signup
+            "
+              className="form__cta--signup-link"
+            >
               Sign up
-            </a>
+            </NavLink>
           </div>
           <FormButton type="submit" text="Login" />{' '}
         </Form>
       </Formik>
-      {/* <form action="" className="form">
-        <div className="form__group">
-          <label htmlFor="email" className="form__label">
-            Enter Email
-          </label>
-          <input
-            type="text"
-            name="email"
-            id="email"
-            className="form__control"
-          />
-        </div>
-        <div className="form__group">
-          <label htmlFor="password" className="form__label">
-            Password
-          </label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            className="form__control"
-          />
-        </div>
-        <div className="form__cta">
-          <a href="/forgot-password" className="form__cta--forgot">
-            Forgot Password
-          </a>
-        </div>
-        <div className=" form__cta form__cta--signup">
-          Don't Have an Account?
-          <a href="/signup" className="form__cta--signup-link">
-            Sign up
-          </a>
-        </div>
-        <button type="submit" className="form__btn">
-          Login
-        </button>
-      </form> */}
       <div className="alternative">
         <p className="alternative__heading">Or</p>
         <div className="alternative__options">

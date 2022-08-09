@@ -9,24 +9,25 @@ const FileInput = ({ label, className, ...props }) => {
 
   const { values } = useFormikContext()
   const { fieldValues } = getIn(values)
-
+  const [fileUrls, setFileUrls] = useState([])
+  const urls = []
   const imageChange = (e) => {
-    let files = []
-    if (files) {
-      Object.entries(e.target.files).forEach((file) => {
-        files.push(file)
-      })
-      setValue(files)
-      setFiles(files)
+    const files = e.target.files
+    for (let index = 0; index < files.length; index++) {
+      if (files[index]['type'].split('/')[0] === 'image') {
+        console.log(files[index])
+        urls.push(URL.createObjectURL(files[index]))
+      }
     }
-    let reader = new FileReader()
+    setValue(files)
+    // setFiles(files)
+    // console.log(urls)
+    setFileUrls(urls)
   }
 
   useEffect(() => {
-    console.log(files)
-
     return () => {}
-  }, [fieldValues, files])
+  }, [fieldValues, files, fileUrls, urls])
 
   return (
     <>
@@ -57,6 +58,14 @@ const FileInput = ({ label, className, ...props }) => {
       {/* {values.claimMedia.length > 0 && (
         <FilePreview media={values.claimMedia} />
       )} */}
+      <div className="preview">
+        {fileUrls.length > 0 &&
+          fileUrls.map((url) => (
+            <div className="preview__image">
+              <img src={url} />
+            </div>
+          ))}
+      </div>
     </>
   )
 }
