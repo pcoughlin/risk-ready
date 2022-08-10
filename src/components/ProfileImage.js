@@ -10,23 +10,20 @@ const ProfileImage = ({ label, ...props }) => {
   const { fieldValues } = getIn(values)
 
   const imageChange = (e) => {
-    console.log(e)
     setValue(e.target.files[0])
     console.log(e.target.files[0])
 
     const reader = new FileReader()
     reader.readAsDataURL(e.target.files[0])
     reader.onload = () => {
-      console.log(reader.result)
       setFile(reader.result)
     }
   }
 
-  useEffect(() => {
-    console.log(file)
+  // useEffect(() => {
 
-    return () => {}
-  }, [fieldValues, file])
+  //   return () => {}
+  // }, [])
   return (
     <div className="profile-form__avatar">
       <img

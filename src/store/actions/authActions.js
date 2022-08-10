@@ -74,7 +74,7 @@ export const signUp = (formData) => {
         console.log(response)
         dispatch({
           type: 'SIGN_UP',
-          payload: response.data.data,
+          payload: response.data,
         })
       })
       .catch((error) => {
@@ -111,9 +111,37 @@ export const updateProfile = (formData) => {
   }
   return (dispatch) => {
     dispatch(loadRequest())
-    axios.put(`${baseUrl}/profile`, formData, config).then((response) => {
-      console.log(response)
-    })
+    axios
+      .put(`${baseUrl}/profile`, formData, config)
+      .then((response) => {
+        console.log(response)
+        dispatch({
+          type: 'UPDATE_PROFILE',
+          payload: response.data,
+        })
+      })
+      .catch((error) => {
+        if (error.response) {
+          const {
+            data: { message },
+          } = error.response
+          console.log(message)
+          dispatch({
+            type: 'UPDATE_PROFILE_ERROR',
+            payload: message,
+          })
+        } else if (error.request) {
+          dispatch({
+            type: 'UPDATE_PROFILE_ERROR',
+            payload: error.request,
+          })
+        } else {
+          dispatch({
+            type: 'UPDATE_PROFILE_ERROR',
+            payload: error.message,
+          })
+        }
+      })
   }
 }
 

@@ -12,9 +12,9 @@ const Home = () => {
   const { isLoggedIn } = useSelector((state) => state.auth)
 
   useEffect(() => {
-    if (!token) {
-      navigate('/auth')
-    }
+    // if (!token) {
+    //   navigate('/auth')
+    // }
     return () => {}
   }, [isLoggedIn])
   return (

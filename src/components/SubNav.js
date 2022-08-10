@@ -7,10 +7,6 @@ const SubNav = () => {
   let navigate = useNavigate()
   let currentPath = location.pathname.split('/')[1]
 
-  if (!currentPath) {
-    navigate('/communities', { replace: true })
-  }
-
   // console.log(location)
   const possiblePaths = {}
   possiblePaths.communities = [

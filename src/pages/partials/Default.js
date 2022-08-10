@@ -1,13 +1,14 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { Outlet } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
-import { useLocation, useMatch } from 'react-router-dom'
+import { useLocation, useMatch, useNavigate } from 'react-router-dom'
 import SubNav from '../../components/SubNav'
 import Widget from '../../components/Widget'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch, useSelector } from 'react-redux'
 import { editProfile } from '../../store/actions/modalActions'
 import { useCloseOption } from '../../utils/closeOption'
+import { useToken } from '../../utils/useToken'
 
 const Default = () => {
   const dispatch = useDispatch()
@@ -21,7 +22,11 @@ const Default = () => {
   const projectDocumentsMatch = useMatch('/vault/project-documents')
   const claimsFilesmatch = useMatch('/vault/claims-files')
 
-  const { user } = useSelector((state) => state.auth)
+  const navigate = useNavigate()
+
+  const { user, isLoggedIn } = useSelector((state) => state.auth)
+  const { token, setToken, getToken } = useToken()
+  getToken()
 
   const [authUser, setAuthUser] = useState()
   const [userOptions, setUserOptions] = useState(false)
@@ -29,6 +34,10 @@ const Default = () => {
   useCloseOption(userOptionsRef, setUserOptions)
 
   useEffect(() => {
+    if (!token) {
+      navigate('/auth')
+    }
+
     if (Object.keys(user).length === 0) {
       const loggedInUser = JSON.parse(localStorage.getItem('risk-ready-token'))
       setAuthUser(loggedInUser)
@@ -36,7 +45,7 @@ const Default = () => {
       setAuthUser(user)
     }
     return () => {}
-  }, [])
+  }, [token])
 
   return (
     <div className="wrapper">

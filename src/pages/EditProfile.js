@@ -20,14 +20,14 @@ const EditProfile = () => {
       userData[key] = value
     }
     console.log(values)
-    // console.log(userData)
+
     dispatch(updateProfile(userData))
   }
 
   // const [field, meta] = useField()
 
   const profileData = {
-    filename: undefined,
+    avatar: undefined,
     last_name: user.last_name || '',
     first_name: user.first_name || '',
     email: user.email || '',
@@ -41,7 +41,7 @@ const EditProfile = () => {
   }
 
   const profileValidation = Yup.object({
-    filename: Yup.mixed().nullable(),
+    avatar: Yup.mixed().nullable(),
     last_name: Yup.string().required('You need  last name to proceed'),
     first_name: Yup.string().required('You need a name to proceed'),
     email: Yup.string()
@@ -77,8 +77,8 @@ const EditProfile = () => {
             label="Change Image"
             type="file"
             accept="image/*"
-            name="filename"
-            id="filename"
+            name="avatar"
+            id="avatar"
           />
           <div className="profile-form__group--super">
             <ProfileInput

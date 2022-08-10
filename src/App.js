@@ -12,7 +12,7 @@ import Neighbours from './pages/Neighbours'
 import { GroupFeeds } from './pages/GroupFeeds'
 import GroupDetails from './pages/GroupDetails'
 
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Navigate } from 'react-router-dom'
 import { useToken } from './utils/useToken'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -105,24 +105,20 @@ library.add(
 function App() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const { token, setToken, getToken } = useToken()
+  // const { token, setToken, getToken } = useToken()
+  // getToken()
 
-  const { isLoggedIn, errorMsg, responseMsg, isLoading } = useSelector(
+  const { errorMsg, responseMsg, isLoading } = useSelector(
     (state) => state.auth,
   )
 
-  const { overlay, profileModal, modalTitle, vaultModal } = useSelector(
+  const { overlay, profileModal, vaultModal } = useSelector(
     (state) => state.modals,
   )
 
   const { vaultResponse, vaultError } = useSelector((state) => state.upload)
 
   useEffect(() => {
-    const token = getToken()
-
-    if (!token) {
-      navigate('/auth')
-    }
     if (isLoading) {
       toast.loading('Please hold on...', { toastId: 'pending' })
     }
@@ -137,13 +133,12 @@ function App() {
 
     return () => {}
   }, [
-    isLoggedIn,
     errorMsg,
     isLoading,
     responseMsg,
     navigate,
     dispatch,
-    getToken,
+    // token,
     overlay,
     vaultResponse,
     vaultError,
@@ -156,7 +151,6 @@ function App() {
         <div className="overlay">
           <div className="modal">
             <div className="modal__head">
-              {/* <span>{modalTitle}</span> */}
               <FontAwesomeIcon
                 icon="fa-circle-xmark"
                 onClick={() => dispatch(closeModal())}
@@ -199,6 +193,8 @@ function App() {
           <Route path="/properties" element={<Properties />} />
           <Route path="/projects" element={<Projects />} />
         </Route>
+      </Routes>
+      <Routes>
         <Route path="/auth" element={<Auth />}>
           <Route path="" index={true} element={<Login />} />
           <Route path=":two-factor" element={<TwoFactor />} />

@@ -1,17 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 
 import TextInput from '../components/TextInput'
 import FormButton from '../components/FormButton'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { signUp } from '../store/actions/authActions'
 
 export const SignUp = () => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   let userData = {}
+
+  const { isLoggedIn } = useSelector((state) => state.auth)
 
   const registerUser = (values) => {
     for (const [key, value] of Object.entries(values)) {
@@ -39,6 +42,11 @@ export const SignUp = () => {
       .required('Please enter a password')
       .min(4, 'Password should be 4 characters minimum'),
   })
+
+  useEffect(() => {
+    isLoggedIn && navigate('/')
+    return () => {}
+  }, [isLoggedIn, navigate])
 
   return (
     <div className="signup">
