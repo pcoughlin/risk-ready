@@ -6,7 +6,7 @@ export const useCloseOption = (ref, setOption) => {
       if (ref.current && !ref.current.contains(e.target)) {
         setTimeout(() => {
           setOption(false)
-        }, 100)
+        }, 200)
       }
     }
     document.addEventListener('mousedown', handleOutsideClick)

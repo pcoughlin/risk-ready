@@ -69,6 +69,7 @@ import ForgotPassword from './pages/ForgotPassword'
 import ResetPassword from './pages/ResetPassword'
 import PasswordReset from './pages/PasswordReset'
 import VaultUploadModal from './components/VaultUploadModal'
+import ConfirmEmail from './pages/ConfirmEmail'
 
 library.add(
   faEnvelope,
@@ -105,44 +106,24 @@ library.add(
 function App() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  // const { token, setToken, getToken } = useToken()
-  // getToken()
 
-  const { errorMsg, responseMsg, isLoading } = useSelector(
-    (state) => state.auth,
-  )
+  const { message, loading, type } = useSelector((state) => state.notifications)
 
   const { overlay, profileModal, vaultModal } = useSelector(
     (state) => state.modals,
   )
 
-  const { vaultResponse, vaultError } = useSelector((state) => state.upload)
-
   useEffect(() => {
-    if (isLoading) {
+    if (loading) {
       toast.loading('Please hold on...', { toastId: 'pending' })
     }
-    if (errorMsg || vaultError) {
+    if (message) {
       toast.dismiss('pending')
-      toast.error(errorMsg || vaultError, { toastId: 'error' })
+      toast[`${type}`](message, { toastId: 'msg' })
     }
-    if (responseMsg || vaultResponse) {
-      toast.dismiss('pending')
-      toast.success(responseMsg || vaultResponse, { toastId: 'success' })
-    }
-
+    toast.dismiss('pending')
     return () => {}
-  }, [
-    errorMsg,
-    isLoading,
-    responseMsg,
-    navigate,
-    dispatch,
-    // token,
-    overlay,
-    vaultResponse,
-    vaultError,
-  ])
+  }, [loading, message, navigate, dispatch, overlay, type])
 
   return (
     <div className="app">
@@ -193,17 +174,19 @@ function App() {
           <Route path="/properties" element={<Properties />} />
           <Route path="/projects" element={<Projects />} />
         </Route>
-      </Routes>
-      <Routes>
         <Route path="/auth" element={<Auth />}>
           <Route path="" index={true} element={<Login />} />
-          <Route path=":two-factor" element={<TwoFactor />} />
-          <Route path=":signup" exact element={<SignUp />} />
-          <Route path=":forgot-password" exact element={<PasswordReset />} />
+          <Route path="two-factor" element={<TwoFactor />} />
+          <Route path="signup" exact element={<SignUp />} />
+          <Route path="forgot-password" exact element={<PasswordReset />} />
+          <Route path="confirm" exact element={<ConfirmEmail />} />
           {/* <Route path="password-reset" exact element={<ResetPassword />} /> */}
         </Route>
         <Route path="/profile/edit" element={<EditProfile />} />
       </Routes>
+      {/* <Routes>
+        
+      </Routes> */}
     </div>
   )
 }

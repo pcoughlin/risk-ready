@@ -20,7 +20,6 @@ export const SignUp = () => {
     for (const [key, value] of Object.entries(values)) {
       userData[key] = value
     }
-    // console.log(userData)
     dispatch(signUp(userData))
   }
 

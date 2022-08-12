@@ -3,13 +3,16 @@ import { Formik, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import ProfileInput from '../components/ProfileInput'
 import { updateProfile } from '../store/actions/authActions'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import ProfileImage from '../components/ProfileImage'
+import { getUserInfo } from '../store/actions/authActions'
+import { useToken } from '../utils/useToken'
 
 const EditProfile = () => {
   const dispatch = useDispatch()
 
-  const user = JSON.parse(localStorage.getItem('risk-ready-token'))
+  const { user } = useSelector((state) => state.auth)
+  const { token } = useToken()
 
   const validPhone = /^[+]?[\s./0-9]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-s\.0-9]{7,14}$/g
   var validZipCode = /(^\d{5}$)|(^\d{5}-\d{4}$)/
@@ -61,8 +64,9 @@ const EditProfile = () => {
   })
 
   useEffect(() => {
+    dispatch(getUserInfo(token))
     return () => {}
-  }, [dispatch])
+  }, [dispatch, token])
 
   return (
     <div className="edit-profile">

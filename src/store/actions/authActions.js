@@ -29,7 +29,7 @@ export const clearError = () => {
 
 export const signIn = (formData) => {
   return (dispatch) => {
-    dispatch(loadRequest())
+    dispatch({ type: 'INITIATE' })
     axios
       .post(`${baseUrl}/sign-in`, formData)
       .then((response) => {
@@ -38,6 +38,17 @@ export const signIn = (formData) => {
           type: 'SIGN_IN',
           payload: response.data,
         })
+
+        dispatch({
+          type: 'SUCCESS_NOTIFICATION',
+          payload: { message: response.data.message, type: 'success' },
+        })
+
+        setTimeout(() => {
+          dispatch({
+            type: 'CLEAR_NOTIFICATION',
+          })
+        }, 100)
       })
       .catch((error) => {
         if (error.response) {
@@ -47,27 +58,78 @@ export const signIn = (formData) => {
           } = error.response
 
           dispatch({
-            type: 'SIGN_IN_ERROR',
-            payload: message,
+            type: 'ERROR_NOTIFICATION',
+            payload: { message, type: 'error' },
           })
         } else if (error.request) {
           dispatch({
-            type: 'SIGN_IN_ERROR',
-            payload: error.request,
+            type: 'ERROR_NOTIFICATION',
+            payload: { message: error.request, type: 'error' },
           })
         } else {
           dispatch({
-            type: 'SIGN_IN_ERROR',
-            payload: error.message,
+            type: 'ERROR_NOTIFICATION',
+            payload: { message: error.message, type: 'error' },
           })
         }
+        setTimeout(() => {
+          dispatch({
+            type: 'CLEAR_NOTIFICATION',
+          })
+        }, 100)
+      })
+  }
+}
+
+export const getUserInfo = (token) => {
+  return (dispatch) => {
+    dispatch({ type: 'INITIATE' })
+    axios
+      .get(`${baseUrl}/profile`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        dispatch({ type: 'FETCH_USER', payload: response.data.data })
+        setTimeout(() => {
+          dispatch({
+            type: 'CLEAR_NOTIFICATION',
+          })
+        }, 100)
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.log(error.response.data)
+          const {
+            data: { message },
+          } = error.response
+
+          dispatch({
+            type: 'ERROR_NOTIFICATION',
+            payload: { message, type: 'error' },
+          })
+        } else if (error.request) {
+          dispatch({
+            type: 'ERROR_NOTIFICATION',
+            payload: { message: error.request, type: 'error' },
+          })
+        } else {
+          dispatch({
+            type: 'ERROR_NOTIFICATION',
+            payload: { message: error.message, type: 'error' },
+          })
+        }
+        setTimeout(() => {
+          dispatch({
+            type: 'CLEAR_NOTIFICATION',
+          })
+        }, 100)
       })
   }
 }
 
 export const signUp = (formData) => {
   return (dispatch) => {
-    dispatch(loadRequest())
+    dispatch({ type: 'INITIATE' })
     axios
       .post(`${baseUrl}/sign-up`, formData)
       .then((response) => {
@@ -76,6 +138,15 @@ export const signUp = (formData) => {
           type: 'SIGN_UP',
           payload: response.data,
         })
+        dispatch({
+          type: 'SUCCESS_NOTIFICATION',
+          payload: { message: response.data.message, type: 'success' },
+        })
+        setTimeout(() => {
+          dispatch({
+            type: 'CLEAR_NOTIFICATION',
+          })
+        }, 100)
       })
       .catch((error) => {
         if (error.response) {
@@ -85,20 +156,74 @@ export const signUp = (formData) => {
           } = error.response
           console.log(errors.errors[0].message)
           dispatch({
-            type: 'SIGN_UP_ERROR',
-            payload: errors.errors[0].message,
+            type: 'ERROR_NOTIFICATION',
+            payload: { message: errors.errors[0].message, type: 'error' },
           })
         } else if (error.request) {
           dispatch({
-            type: 'SIGN_UP_ERROR',
-            payload: error.request,
+            type: 'ERROR_NOTIFICATION',
+            payload: { message: error.request, type: 'error' },
           })
         } else {
           dispatch({
-            type: 'SIGN_UP_ERROR',
-            payload: error.message,
+            type: 'ERROR_NOTIFICATION',
+            payload: { message: error.message, type: 'error' },
           })
         }
+        setTimeout(() => {
+          dispatch({
+            type: 'CLEAR_NOTIFICATION',
+          })
+        }, 100)
+      })
+  }
+}
+
+export const confirmEmail = (formData) => {
+  return (dispatch) => {
+    dispatch({ type: 'INITIATE' })
+    axios
+      .post(`${baseUrl}/verify`, formData)
+      .then((response) => {
+        console.log(response)
+        dispatch({ type: 'CONFIRM_EMAIL', payload: response.data.data })
+        dispatch({
+          type: 'SUCCESS_NOTIFICATION',
+          payload: { message: response.data.message, type: 'error' },
+        })
+        setTimeout(() => {
+          dispatch({
+            type: 'CLEAR_NOTIFICATION',
+          })
+        }, 100)
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.log(error.response.data)
+          const {
+            data: { message },
+          } = error.response
+
+          dispatch({
+            type: 'ERROR_NOTIFICATION',
+            payload: { message, type: 'error' },
+          })
+        } else if (error.request) {
+          dispatch({
+            type: 'ERROR_NOTIFICATION',
+            payload: { message: error.request, type: 'error' },
+          })
+        } else {
+          dispatch({
+            type: 'ERROR_NOTIFICATION',
+            payload: { message: error.message, type: 'error' },
+          })
+        }
+        setTimeout(() => {
+          dispatch({
+            type: 'CLEAR_NOTIFICATION',
+          })
+        }, 100)
       })
   }
 }
@@ -110,7 +235,7 @@ export const updateProfile = (formData) => {
     headers: { Authorization: `Bearer ${token}` },
   }
   return (dispatch) => {
-    dispatch(loadRequest())
+    dispatch({ type: 'INITIATE' })
     axios
       .put(`${baseUrl}/profile`, formData, config)
       .then((response) => {
@@ -119,6 +244,15 @@ export const updateProfile = (formData) => {
           type: 'UPDATE_PROFILE',
           payload: response.data,
         })
+        dispatch({
+          type: 'SUCCESS_NOTIFICATION',
+          payload: { message: response.data.message, type: 'success' },
+        })
+        setTimeout(() => {
+          dispatch({
+            type: 'CLEAR_NOTIFICATION',
+          })
+        }, 100)
       })
       .catch((error) => {
         if (error.response) {
@@ -127,27 +261,32 @@ export const updateProfile = (formData) => {
           } = error.response
           console.log(message)
           dispatch({
-            type: 'UPDATE_PROFILE_ERROR',
-            payload: message,
+            type: 'ERROR_NOTIFICATION',
+            payload: { message, type: 'error' },
           })
         } else if (error.request) {
           dispatch({
-            type: 'UPDATE_PROFILE_ERROR',
-            payload: error.request,
+            type: 'ERROR_NOTIFICATION',
+            payload: { message: error.request, type: 'error' },
           })
         } else {
           dispatch({
-            type: 'UPDATE_PROFILE_ERROR',
-            payload: error.message,
+            type: 'ERROR_NOTIFICATION',
+            payload: { message: error.message, type: 'error' },
           })
         }
+        setTimeout(() => {
+          dispatch({
+            type: 'CLEAR_NOTIFICATION',
+          })
+        }, 100)
       })
   }
 }
 
 export const forgotPassword = (email) => {
   return (dispatch) => {
-    dispatch(loadRequest())
+    dispatch({ type: 'INITIATE' })
     axios
       .post(`${baseUrl}/forgot-password`, { email })
       .then((response) => {
@@ -155,6 +294,15 @@ export const forgotPassword = (email) => {
           type: 'FORGOT_PASSWORD',
           payload: response.data,
         })
+        dispatch({
+          type: 'SUCCESS_NOTIFICATION',
+          payload: { message: response.data.message, type: 'success' },
+        })
+        setTimeout(() => {
+          dispatch({
+            type: 'CLEAR_NOTIFICATION',
+          })
+        }, 100)
       })
       .catch((error) => {
         if (error.response) {
@@ -163,13 +311,13 @@ export const forgotPassword = (email) => {
           } = error.response
           console.log(message)
           dispatch({
-            type: 'FORGOT_PASSWORD_ERROR',
-            payload: message,
+            type: 'ERROR_NOTIFICATION',
+            payload: { message, type: 'error' },
           })
         } else if (error.request) {
           dispatch({
-            type: 'FORGOT_PASSWORD_ERROR',
-            payload: error.request,
+            type: 'ERROR_NOTIFICATION',
+            payload: { message: error.request, type: 'error' },
           })
         } else {
           dispatch({
@@ -177,12 +325,18 @@ export const forgotPassword = (email) => {
             payload: error.message,
           })
         }
+        setTimeout(() => {
+          dispatch({
+            type: 'CLEAR_NOTIFICATION',
+          })
+        }, 100)
       })
   }
 }
 
 export const resetPassword = (data) => {
   return (dispatch) => {
+    dispatch({ type: 'INITIATE' })
     axios
       .post(`${baseUrl}/reset-password`, data)
       .then((response) => {
@@ -191,6 +345,15 @@ export const resetPassword = (data) => {
           type: 'RESET_PASSWORD',
           payload: response.data.data,
         })
+        dispatch({
+          type: 'SUCCESS_NOTIFICATION',
+          payload: { message: response.data.data.message, type: 'success' },
+        })
+        setTimeout(() => {
+          dispatch({
+            type: 'CLEAR_NOTIFICATION',
+          })
+        }, 100)
       })
       .catch((error) => {
         console.log(error)
@@ -199,8 +362,8 @@ export const resetPassword = (data) => {
             data: { message },
           } = error.response
           dispatch({
-            type: 'RESET_ERROR',
-            payload: message,
+            type: 'ERROR_NOTIFICATION',
+            payload: { message, type: 'error' },
           })
         } else if (error.request) {
           dispatch({
@@ -209,10 +372,22 @@ export const resetPassword = (data) => {
           })
         } else {
           dispatch({
-            type: 'RESET_ERROR',
-            payload: error.message,
+            type: 'ERROR_NOTIFICATION',
+            payload: { message: error.message, type: 'error' },
           })
         }
+        setTimeout(() => {
+          dispatch({
+            type: 'CLEAR_NOTIFICATION',
+          })
+        }, 100)
       })
+  }
+}
+
+export const logout = () => {
+  console.log('ki')
+  return (dispatch) => {
+    dispatch({ type: 'LOGOUT' })
   }
 }

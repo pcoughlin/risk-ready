@@ -7,8 +7,7 @@ import { getVaults } from '../store/actions/uploadActions'
 const ProjectDocuments = () => {
   const dispatch = useDispatch()
 
-  const user = JSON.parse(localStorage.getItem('risk-ready-token'))
-  const token = user.token
+  const token = JSON.parse(localStorage.getItem('risk-ready-token'))
   const { documentFiles } = useSelector((state) => state.upload)
 
   console.log(documentFiles)
@@ -18,7 +17,7 @@ const ProjectDocuments = () => {
     dispatch(getVaults(token))
 
     return () => {}
-  }, [dispatch])
+  }, [dispatch, token])
 
   return (
     <div className="insurance">

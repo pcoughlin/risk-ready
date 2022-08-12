@@ -8,21 +8,27 @@ import { NavLink } from 'react-router-dom'
 import { signIn } from '../store/actions/authActions'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { useToken } from '../utils/useToken'
 
 const Login = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-
-  const { isLoggedIn } = useSelector((state) => state.auth)
+  const { getToken } = useToken()
 
   const handleLogin = (values) => {
     dispatch(signIn({ email: values.email, password: values.password }))
   }
 
+  const timedNavigation = () => {
+    setTimeout(() => {
+      navigate('/')
+    }, 1000)
+  }
   useEffect(() => {
-    isLoggedIn && navigate('/')
+    const token = getToken()
+    token && timedNavigation()
     return () => {}
-  }, [isLoggedIn, navigate])
+  }, [navigate, dispatch, getToken])
 
   return (
     <div className="login">
